@@ -19,13 +19,15 @@ phases:
       - echo "Build started on `date`"
       - mvn -s settings.xml compile
       - echo "====== BUILD PHASE COMPLETE ======"
-  
-  post_build:
-    commands:
-      - echo "Build completed on `date`"
-      - mvn -s settings.xml package
 
-artifacts:
-  files:
-    - target/nextwork-web-project.war
-  discard-paths: no
+    post_build:
+        commands:
+          - echo "Build completed on `date`"
+          - mvn -s settings.xml package
+
+    artifacts:
+        files:
+          - target/nextwork-web-project.war
+          - appspec.yml
+          - scripts/**/*
+        discard-paths: no
